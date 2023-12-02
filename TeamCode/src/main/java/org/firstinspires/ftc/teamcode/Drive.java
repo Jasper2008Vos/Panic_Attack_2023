@@ -16,6 +16,7 @@ public class Drive extends LinearOpMode {
     private DcMotor motorRightBack;
     private DcMotor motorIntake;
     private Servo Vliegtuig;
+    float servo;
 
     @Override
     public void runOpMode () {
@@ -33,6 +34,7 @@ public class Drive extends LinearOpMode {
         double z;
         double TurnRate;
         motorIntake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        servo = 0;
 
 
 
@@ -44,8 +46,11 @@ public class Drive extends LinearOpMode {
             y = 0.5*gamepad1.left_stick_y;
             TurnRate = 0.5*(gamepad1.right_trigger - gamepad1.left_trigger);
             z = 0.5*gamepad2.left_stick_y;
-            if (gamepad2.a){
-                Vliegtuig.setPosition(1);
+            if (gamepad2.y){
+                Vliegtuig.setPosition(0.4);
+            }
+            if (gamepad2.b){
+                Vliegtuig.setPosition(0);
             }
 
             motorRightBack.setPower(x - y - TurnRate);
