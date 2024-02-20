@@ -6,8 +6,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@TeleOp(name="Drivercontrolled", group = "")
-public class Drive extends LinearOpMode {
+@TeleOp(name="opendag", group = "")
+public class Drive2 extends LinearOpMode {
 
     private ElapsedTime runtime = new ElapsedTime();
     private DcMotor motorLeftFront;
@@ -34,7 +34,6 @@ public class Drive extends LinearOpMode {
 
         double x;
         double y;
-        double z;
         double intake;
         double TurnRate;
         motorIntake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
@@ -46,10 +45,10 @@ public class Drive extends LinearOpMode {
         runtime.reset();
 
         while (opModeIsActive()) {
-            x = -0.5*gamepad1.left_stick_x;
-            y = 0.5*gamepad1.left_stick_y;
+            x = -1*gamepad1.left_stick_x;
+            y = 1*gamepad1.left_stick_y;
             TurnRate = 0.5*(gamepad1.right_trigger - gamepad1.left_trigger);
-            intake = 0.5*gamepad2.left_stick_y;
+            intake = -0.25*gamepad1.right_stick_y;
             if (gamepad2.y){
                 Vliegtuig.setPosition(0.4);
             }
