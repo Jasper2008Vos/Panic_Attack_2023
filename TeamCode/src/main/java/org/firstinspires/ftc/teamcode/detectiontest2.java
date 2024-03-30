@@ -140,7 +140,7 @@ public class detectiontest2 extends LinearOpMode {
                     visionPortal.resumeStreaming();
                 }
 
-                if (currentRecognitions.size() > 0) {
+                if (currentRecognitions.size() > 0 || startingTime+5000 <= System.currentTimeMillis()) {
                     break;
                     }
                 // Share the CPU.
@@ -153,7 +153,7 @@ public class detectiontest2 extends LinearOpMode {
             //  case 0:
             //      driveforward();
             //      if starting
-            if (x < 200) {
+            if (x < 200 && x > 0) {
                 telemetry.addData("position left", "");
                 telemetry.addData("- Position", "%.0f / %.0f", x, y);
                 telemetry.update();
@@ -166,9 +166,21 @@ public class detectiontest2 extends LinearOpMode {
                 motorLeftBack.setPower(0.2);
                 motorRightFront.setPower(-0.2);
                 motorRightBack.setPower(0.2);
+                sleep(2500);
+                motorLeftFront.setPower(0);
+                motorLeftBack.setPower(0);
+                motorRightFront.setPower(0);
+                motorRightBack.setPower(0);
+                motorIntake.setPower(-0.2);
                 sleep(2000);
+                motorLeftFront.setPower(0.2);
+                motorLeftBack.setPower(0.2);
+                motorRightFront.setPower(0.2);
+                motorRightBack.setPower(-0.2);
+                sleep(1500);
+
             }
-            else if (x < 400) {
+            else if (x < 400 && x > 0) {
                 telemetry.addData("position mid", "");
                 telemetry.addData("- Position", "%.0f / %.0f", x, y);
                 telemetry.update();
@@ -181,7 +193,7 @@ public class detectiontest2 extends LinearOpMode {
                 motorLeftBack.setPower(0.2);
                 motorRightFront.setPower(0.2);
                 motorRightBack.setPower(-0.2);
-                sleep(1000);
+                sleep(2000);
             }
             else {
                 telemetry.addData("position right", "");
@@ -197,7 +209,24 @@ public class detectiontest2 extends LinearOpMode {
                 motorLeftBack.setPower(-0.2);
                 motorRightFront.setPower(0.2);
                 motorRightBack.setPower(-0.2);
+                sleep(2700);
+                motorLeftFront.setPower(-0.2);
+                motorLeftBack.setPower(-0.2);
+                motorRightFront.setPower(-0.2);
+                motorRightBack.setPower(0.2);
+                sleep(1000);
+                motorLeftFront.setPower(0);
+                motorLeftBack.setPower(0);
+                motorRightFront.setPower(0);
+                motorRightBack.setPower(0);
+                motorIntake.setPower(-0.2);
                 sleep(2000);
+                motorLeftFront.setPower(0.2);
+                motorLeftBack.setPower(0.2);
+                motorRightFront.setPower(0.2);
+                motorRightBack.setPower(-0.2);
+                sleep(1500);
+
 
             }
         }
